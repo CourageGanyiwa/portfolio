@@ -12,43 +12,43 @@
 --------------------------------------------------------------*/
 /* Fonts */
 :root {
-  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Raleway",  sans-serif;
+  --default-font: "Inter",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Outfit",  sans-serif;
   --nav-font: "Poppins",  sans-serif;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root { 
-  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
-  --default-color: #272829; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #050d18; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #149ddd; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+  --background-color: #ffffff;
+  --default-color: #334155;
+  --heading-color: #0f172a;
+  --accent-color: #6366F1;
+  --surface-color: #ffffff;
+  --contrast-color: #ffffff;
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #a8a9b4;  /* The default color of the main navmenu links */
-  --nav-hover-color: #ffffff; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #040b14; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #040b14; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #a8a9b4; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #ffffff; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-color: #94a3b8;
+  --nav-hover-color: #ffffff;
+  --nav-mobile-background-color: #0f172a;
+  --nav-dropdown-background-color: #0f172a;
+  --nav-dropdown-color: #94a3b8;
+  --nav-dropdown-hover-color: #ffffff;
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
-  --background-color: #f4fafd;
+  --background-color: #f8fafc;
   --surface-color: #ffffff;
 }
 
 .dark-background {
-  --background-color: #040b14;
-  --default-color: #ffffff;
-  --heading-color: #ffffff;
-  --surface-color: #151f2b;
+  --background-color: #0f172a;
+  --default-color: #cbd5e1;
+  --heading-color: #f1f5f9;
+  --surface-color: #1e293b;
   --contrast-color: #ffffff;
 }
 
@@ -331,7 +331,7 @@ h6 {
 
 .navmenu .dropdown a,
 .navmenu .dropdown a:focus {
-  color: --nav-dropdown-color;
+  color: var(--nav-dropdown-color);
 }
 
 .navmenu .dropdown a:hover,
@@ -506,6 +506,14 @@ section,
   background-color: var(--background-color);
   padding: 60px 0;
   overflow: clip;
+  scroll-margin-top: 80px;
+}
+
+@media (max-width: 1199px) {
+  section,
+  .section {
+    scroll-margin-top: 60px;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -533,6 +541,7 @@ section,
   background: var(--accent-color);
   left: 0;
   bottom: 0;
+  border-radius: 2px;
 }
 
 .section-title p {
@@ -564,7 +573,7 @@ section,
 
 .hero:before {
   content: "";
-  background: color-mix(in srgb, var(--background-color), transparent 70%);
+  background: color-mix(in srgb, var(--background-color), transparent 60%);
   position: absolute;
   inset: 0;
   z-index: 2;
@@ -623,29 +632,98 @@ section,
 --------------------------------------------------------------*/
 .about .content h2 {
   font-weight: 700;
-  font-size: 24px;
+  font-size: 26px;
+  margin-bottom: 16px;
+  color: var(--heading-color);
 }
 
-.about .content ul {
-  list-style: none;
+.about .content > p {
+  font-family: var(--default-font);
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--default-color);
+}
+
+.about .content .about-intro {
+  font-family: var(--heading-font);
+  font-size: 15.5px;
+  line-height: 1.8;
+  color: color-mix(in srgb, var(--default-color), transparent 15%);
+  padding: 20px 24px;
+  background: color-mix(in srgb, var(--accent-color), transparent 95%);
+  border-radius: 10px;
+  border-left: 3px solid var(--accent-color);
+  margin-bottom: 24px;
+}
+
+.about .about-growth {
+  margin-top: 28px;
+  padding: 24px 28px;
+  background: var(--surface-color);
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05);
+  border: 1px solid color-mix(in srgb, var(--accent-color), transparent 88%);
+}
+
+.about .about-subtitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-bottom: 16px;
+  font-family: var(--heading-font);
+  letter-spacing: -0.3px;
+}
+
+.about .content .about-outro {
+  font-family: var(--default-font);
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--default-color);
+  margin: 0;
+}
+
+.about .info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 24px;
   padding: 0;
+  margin-bottom: 20px;
+  list-style: none;
 }
 
-.about .content ul li {
-  margin-bottom: 20px;
+.about .info-grid li {
   display: flex;
   align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: var(--surface-color);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
+  transition: 0.3s;
 }
 
-.about .content ul strong {
-  margin-right: 10px;
+.about .info-grid li:hover {
+  border-color: color-mix(in srgb, var(--accent-color), transparent 70%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-.about .content ul i {
-  font-size: 16px;
-  margin-right: 5px;
+.about .info-grid li i {
+  font-size: 14px;
   color: var(--accent-color);
   line-height: 0;
+  flex-shrink: 0;
+}
+
+.about .info-grid li strong {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--heading-color);
+  white-space: nowrap;
+}
+
+.about .info-grid li span {
+  font-size: 13px;
+  color: var(--default-color);
 }
 
 /*--------------------------------------------------------------
@@ -723,42 +801,23 @@ section,
 --------------------------------------------------------------*/
 .resume .resume-title {
   color: var(--heading-color);
-  font-size: 26px;
-  font-weight: 700;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 40px;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid color-mix(in srgb, var(--accent-color), transparent 80%);
+  letter-spacing: 0.3px;
+}
+
+.resume .resume-title:first-of-type {
+  margin-top: 0;
 }
 
 .resume .resume-item {
-  padding: 0 0 20px 20px;
-  margin-top: -2px;
+  padding: 0 0 28px 24px;
   border-left: 2px solid var(--accent-color);
   position: relative;
-}
-
-.resume .resume-item h4 {
-  line-height: 18px;
-  font-size: 18px;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
-  margin-bottom: 10px;
-}
-
-.resume .resume-item h5 {
-  font-size: 16px;
-  padding: 5px 15px;
-  display: inline-block;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.resume .resume-item ul {
-  padding-left: 20px;
-}
-
-.resume .resume-item ul li {
-  padding-bottom: 10px;
 }
 
 .resume .resume-item:last-child {
@@ -768,13 +827,132 @@ section,
 .resume .resume-item::before {
   content: "";
   position: absolute;
-  width: 16px;
-  height: 16px;
-  border-radius: 50px;
-  left: -9px;
-  top: 0;
-  background: var(--background-color);
-  border: 2px solid var(--accent-color);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  left: -7px;
+  top: 4px;
+  background: var(--accent-color);
+}
+
+.resume .resume-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
+.resume .resume-meta h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--heading-color);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.resume .resume-meta h5 {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 90%);
+  padding: 3px 12px;
+  border-radius: 20px;
+  margin: 0;
+  display: inline-block;
+  letter-spacing: 0.3px;
+}
+
+.resume .resume-institution {
+  font-size: 14px;
+  color: color-mix(in srgb, var(--default-color), transparent 25%);
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+.resume .resume-item > p {
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+/* Experience Cards
+------------------------------*/
+.resume .exp-card {
+  background: var(--surface-color);
+  border-radius: 12px;
+  padding: 24px;
+  height: 100%;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+  transition: 0.3s;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
+}
+
+.resume .exp-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  border-color: color-mix(in srgb, var(--accent-color), transparent 70%);
+}
+
+.resume .exp-card-header {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.resume .exp-card .exp-date {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 90%);
+  padding: 3px 10px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 10px;
+  letter-spacing: 0.3px;
+}
+
+.resume .exp-card h4 {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--heading-color);
+  margin-bottom: 4px;
+}
+
+.resume .exp-card .exp-company {
+  font-size: 13px;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  margin: 0;
+}
+
+.resume .exp-card ul {
+  padding-left: 0;
+  list-style: none;
+  margin: 0;
+}
+
+.resume .exp-card ul li {
+  font-size: 13px;
+  line-height: 1.6;
+  padding: 6px 0 6px 18px;
+  position: relative;
+  color: var(--default-color);
+}
+
+.resume .exp-card ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 13px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  opacity: 0.5;
+}
+
+.resume .exp-card ul li:last-child {
+  padding-bottom: 0;
 }
 
 /*--------------------------------------------------------------
@@ -890,6 +1068,72 @@ section,
   transform: scale(1.1);
 }
 
+/* Portfolio Cards
+------------------------------*/
+.portfolio .portfolio-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: 0.4s;
+  background: var(--surface-color);
+}
+
+.portfolio .portfolio-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+.portfolio .portfolio-card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+  transition: 0.4s;
+}
+
+.portfolio .portfolio-card:hover img {
+  transform: scale(1.05);
+}
+
+.portfolio .portfolio-card .portfolio-card-info {
+  padding: 18px 20px;
+}
+
+.portfolio .portfolio-card .portfolio-card-info h4 {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--heading-color);
+  margin-bottom: 4px;
+}
+
+.portfolio .portfolio-card .portfolio-card-info p {
+  font-size: 13px;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Profile Card
+------------------------------*/
+.about .profile-card {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transition: 0.4s;
+}
+
+.about .profile-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.about .profile-card img {
+  width: 100%;
+  display: block;
+}
+
 /*--------------------------------------------------------------
 # Services Section
 --------------------------------------------------------------*/
@@ -908,6 +1152,7 @@ section,
   transition: 0.5s;
   border: 1px solid var(--accent-color);
   margin-right: 20px;
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--accent-color), transparent 70%);
 }
 
 .services .service-item .icon i {
