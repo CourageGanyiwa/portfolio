@@ -25,7 +25,7 @@
   --background-color: #ffffff;
   --default-color: #334155;
   --heading-color: #0f172a;
-  --accent-color: #4242ff;
+  --accent-color: #1a56db;
   --surface-color: #ffffff;
   --contrast-color: #ffffff;
 }
@@ -48,7 +48,7 @@
 }
 
 .dark-background {
-  --background-color: #0f172a;
+  --background-color: #010102;
   --default-color: #cbd5e1;
   --heading-color: #f1f5f9;
   --surface-color: #1e293b;
@@ -156,9 +156,18 @@ h6 {
   width: 300px;
   transition: all ease-in-out 0.3s;
   overflow-y: auto;
+  scrollbar-width: none;
   z-index: 997;
   border-right: 1px solid
     color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.header::-webkit-scrollbar {
+  display: none;
+}
+
+.header .profile-img {
+  padding-top: 30px;
 }
 
 .header .profile-img img {
