@@ -43,7 +43,7 @@
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
-  --background-color: #f8fafc;
+  --background-color: #98c5f1e8;
   --surface-color: #ffffff;
 }
 
@@ -368,8 +368,8 @@ h6 {
 # Global Footer
 --------------------------------------------------------------*/
 .footer {
-  color: var(--default-color);
-  background-color: var(--background-color);
+  color: #ffffff;
+  background-color: #000000;
   font-size: 14px;
   padding: 40px 0;
   position: relative;
@@ -1290,6 +1290,38 @@ section,
 
 .testimonials .swiper-pagination .swiper-pagination-bullet-active {
   background-color: var(--accent-color);
+}
+
+.testimonials {
+  position: relative;
+}
+
+.testimonials .testimonials-bg-svg {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 400px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.testimonials .container {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 991px) {
+  .testimonials .testimonials-bg-svg {
+    display: none;
+  }
+}
+
+@media (max-width: 991px) {
+  .testimonials .testimonials-bg-svg {
+    display: none;
+  }
 }
 
 /*--------------------------------------------------------------
