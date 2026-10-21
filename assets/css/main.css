@@ -790,7 +790,7 @@ section,
 
 .skills .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
   gap: 14px;
 }
 
@@ -811,15 +811,17 @@ section,
   transition: 0.3s ease;
 }
 
-.skills .skill-card::before {
-  content: "";
+.skills .skill-icon {
   flex: 0 0 auto;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent-color);
-  opacity: 0.55;
-  transition: 0.3s ease;
+  width: 22px;
+  height: 22px;
+  fill: var(--accent-color);
+  transition: transform 0.3s ease, fill 0.3s ease;
+}
+
+.skills .skill-card > span {
+  min-width: 0;
+  overflow-wrap: break-word;
 }
 
 .skills .skill-card::after {
@@ -841,8 +843,9 @@ section,
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 }
 
-.skills .skill-card:hover::before {
-  opacity: 1;
+.skills .skill-card:hover .skill-icon {
+  transform: scale(1.12);
+  fill: color-mix(in srgb, var(--accent-color), black 15%);
 }
 
 .skills .skill-card:hover::after {
