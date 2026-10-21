@@ -13,11 +13,12 @@
 /* Fonts */
 :root {
   --default-font:
-    "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
-    Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Outfit", sans-serif;
-  --nav-font: "Poppins", sans-serif;
+    "Scoutie Sans", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+  --heading-font: "Scoutie Sans", sans-serif;
+  --nav-font: "Scoutie Sans", sans-serif;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
@@ -775,38 +776,77 @@ section,
 /*--------------------------------------------------------------
 # Skills Section
 --------------------------------------------------------------*/
-.skills .progress {
-  height: 60px;
-  display: block;
-  background: none;
-  border-radius: 0;
-}
-
-.skills .progress .skill {
-  color: var(--heading-color);
-  padding: 0;
-  margin: 0 0 6px 0;
-  text-transform: uppercase;
-  display: block;
-  font-weight: 600;
+.skills .skills-group-title {
   font-family: var(--heading-font);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--heading-color);
+  letter-spacing: 0.3px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid
+    color-mix(in srgb, var(--accent-color), transparent 80%);
 }
 
-.skills .progress .skill .val {
-  float: right;
-  font-style: normal;
+.skills .skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 14px;
 }
 
-.skills .progress-bar-wrap {
-  background: color-mix(in srgb, var(--default-color), transparent 90%);
-  height: 10px;
+.skills .skill-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 20px;
+  background: var(--surface-color);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  border-radius: 12px;
+  font-family: var(--heading-font);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--heading-color);
+  overflow: hidden;
+  transition: 0.3s ease;
 }
 
-.skills .progress-bar {
-  width: 1px;
-  height: 10px;
-  transition: 0.9s;
-  background-color: var(--accent-color);
+.skills .skill-card::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  opacity: 0.55;
+  transition: 0.3s ease;
+}
+
+.skills .skill-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: var(--accent-color);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.3s ease;
+}
+
+.skills .skill-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent-color), transparent 60%);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.skills .skill-card:hover::before {
+  opacity: 1;
+}
+
+.skills .skill-card:hover::after {
+  transform: scaleY(1);
 }
 
 /*--------------------------------------------------------------
