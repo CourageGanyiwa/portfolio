@@ -1,192 +1,227 @@
-/**
-* Template Name: iPortfolio
-* Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-* Updated: Jun 29 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+(function () {
+  "use strict";
 
-(function() {
-  ("use strict");
+  var root = document.documentElement;
+  var appearanceKey = "appearance";
 
-  /**
-   * Preloader
-   */
-  const preloader = document.querySelector("#preloader");
-  if (preloader) {
-    window.addEventListener("load", () => {
-      preloader.remove();
+  function readStorage(storage, key) {
+    try {
+      return storage.getItem(key);
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function writeStorage(storage, key, value) {
+    try {
+      storage.setItem(key, value);
+    } catch (error) {}
+  }
+
+  function updateThemeControls() {
+    var isDark = root.classList.contains("dark");
+
+    document.querySelectorAll("[data-theme-toggle]").forEach(function (button) {
+      button.setAttribute(
+        "aria-label",
+        isDark ? "Switch to light mode" : "Switch to dark mode",
+      );
+      button.setAttribute(
+        "title",
+        isDark ? "Switch to light mode" : "Switch to dark mode",
+      );
     });
   }
 
-  /**
-   * Scroll top button
-   */
-  let scrollTop = document.querySelector(".scroll-top");
-
-  function toggleScrollTop() {
-    if (scrollTop) {
-      window.scrollY > 100
-        ? scrollTop.classList.add("active")
-        : scrollTop.classList.remove("active");
-    }
+  function applyAppearance(appearance) {
+    root.classList.toggle("dark", appearance === "dark");
+    root.style.colorScheme = appearance === "dark" ? "dark" : "light";
+    writeStorage(localStorage, appearanceKey, appearance);
+    updateThemeControls();
   }
-  scrollTop.addEventListener("click", (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
+
+  var storedAppearance = readStorage(localStorage, appearanceKey);
+
+  applyAppearance(storedAppearance === "light" ? "light" : "dark");
+
+  document.querySelectorAll("[data-theme-toggle]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      applyAppearance(root.classList.contains("dark") ? "light" : "dark");
     });
   });
 
-  window.addEventListener("load", toggleScrollTop);
-  document.addEventListener("scroll", toggleScrollTop);
+  document.querySelectorAll("[data-promo-dismiss]").forEach(function (button) {
+    var promo = button.closest(".site-promo");
 
-  /**
-   * Animation on scroll function and init
-   */
-  function aosInit() {
-    AOS.init({
+    if (!promo) {
+      return;
+    }
+
+    if (readStorage(sessionStorage, "promo-dismissed") === "1") {
+      promo.remove();
+
+      return;
+    }
+
+    button.addEventListener("click", function () {
+      writeStorage(sessionStorage, "promo-dismissed", "1");
+      promo.remove();
+    });
+  });
+
+  var menuToggle = document.querySelector("[data-menu-toggle]");
+  var mobileNav = document.getElementById("mobile-navigation");
+
+  if (menuToggle && mobileNav) {
+    var setMenuOpen = function (open) {
+      mobileNav.classList.toggle("open", open);
+      menuToggle.setAttribute("aria-expanded", String(open));
+    };
+
+    menuToggle.addEventListener("click", function () {
+      setMenuOpen(menuToggle.getAttribute("aria-expanded") !== "true");
+    });
+
+    mobileNav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        setMenuOpen(false);
+      });
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+      }
+    });
+  }
+
+  var navLinks = Array.prototype.slice.call(
+    document.querySelectorAll(".site-nav a[href^='#']"),
+  );
+
+  var navSections = navLinks
+    .map(function (link) {
+      return document.querySelector(link.getAttribute("href"));
+    })
+    .filter(Boolean);
+
+  function updateActiveNav() {
+    var position = window.scrollY + 140;
+    var currentId = "";
+
+    navSections.forEach(function (section) {
+      if (
+        position >= section.offsetTop &&
+        position < section.offsetTop + section.offsetHeight
+      ) {
+        currentId = section.id;
+      }
+    });
+
+    navLinks.forEach(function (link) {
+      link.classList.toggle(
+        "active",
+        link.getAttribute("href") === "#" + currentId,
+      );
+    });
+  }
+
+  if (navLinks.length) {
+    window.addEventListener("scroll", updateActiveNav, { passive: true });
+    window.addEventListener("load", updateActiveNav);
+    updateActiveNav();
+  }
+
+  var scrollTop = document.querySelector(".scroll-top");
+
+  if (scrollTop) {
+    var toggleScrollTop = function () {
+      scrollTop.classList.toggle("active", window.scrollY > 200);
+    };
+
+    scrollTop.addEventListener("click", function (event) {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    window.addEventListener("scroll", toggleScrollTop, { passive: true });
+    window.addEventListener("load", toggleScrollTop);
+    toggleScrollTop();
+  }
+
+  if (window.AOS) {
+    window.AOS.init({
       duration: 600,
-      easing: "ease-in-out",
+      easing: "ease-out",
       once: true,
       mirror: false,
     });
   }
-  window.addEventListener("load", aosInit);
 
-  /**
-   * Init typed.js
-   */
-  const selectTyped = document.querySelector(".typed");
-  if (selectTyped) {
-    let typed_strings = selectTyped.getAttribute("data-typed-items");
-    typed_strings = typed_strings.split(",");
-    new Typed(".typed", {
-      strings: typed_strings,
-      loop: true,
-      typeSpeed: 100,
-      backSpeed: 50,
-      backDelay: 2000,
-    });
-  }
+  var typedElement = document.querySelector(".typed");
 
-  /**
-   * Initiate Pure Counter
-   */
-  new PureCounter();
+  if (typedElement && window.Typed) {
+    var typedItems = (typedElement.getAttribute("data-typed-items") || "")
+      .split(",")
+      .map(function (item) {
+        return item.trim();
+      })
+      .filter(Boolean);
 
-  /**
-   * Initiate glightbox
-   */
-  const glightbox = GLightbox({
-    selector: ".glightbox",
-  });
-
-  /**
-   * Init isotope layout and filters
-   */
-  document.querySelectorAll(".isotope-layout").forEach(function (isotopeItem) {
-    let layout = isotopeItem.getAttribute("data-layout") ?? "masonry";
-    let filter = isotopeItem.getAttribute("data-default-filter") ?? "*";
-    let sort = isotopeItem.getAttribute("data-sort") ?? "original-order";
-
-    let initIsotope;
-    imagesLoaded(isotopeItem.querySelector(".isotope-container"), function () {
-      initIsotope = new Isotope(
-        isotopeItem.querySelector(".isotope-container"),
-        {
-          itemSelector: ".isotope-item",
-          layoutMode: layout,
-          filter: filter,
-          sortBy: sort,
-        },
-      );
-    });
-
-    isotopeItem
-      .querySelectorAll(".isotope-filters li")
-      .forEach(function (filters) {
-        filters.addEventListener(
-          "click",
-          function () {
-            isotopeItem
-              .querySelector(".isotope-filters .filter-active")
-              .classList.remove("filter-active");
-            this.classList.add("filter-active");
-            initIsotope.arrange({
-              filter: this.getAttribute("data-filter"),
-            });
-            if (typeof aosInit === "function") {
-              aosInit();
-            }
-          },
-          false,
-        );
+    if (typedItems.length) {
+      new window.Typed(typedElement, {
+        strings: typedItems,
+        loop: true,
+        typeSpeed: 90,
+        backSpeed: 45,
+        backDelay: 2200,
       });
-  });
-
-  /**
-   * Init swiper sliders
-   */
-  function initSwiper() {
-    document.querySelectorAll(".init-swiper").forEach(function (swiperElement) {
-      let config = JSON.parse(
-        swiperElement.querySelector(".swiper-config").innerHTML.trim(),
-      );
-
-      if (swiperElement.classList.contains("swiper-tab")) {
-        initSwiperWithCustomPagination(swiperElement, config);
-      } else {
-        new Swiper(swiperElement, config);
-      }
-    });
-  }
-
-  window.addEventListener("load", initSwiper);
-
-  /**
-   * Correct scrolling position upon page load for URLs containing hash links.
-   */
-  window.addEventListener("load", function (e) {
-    if (window.location.hash) {
-      if (document.querySelector(window.location.hash)) {
-        setTimeout(() => {
-          let section = document.querySelector(window.location.hash);
-          let scrollMarginTop = getComputedStyle(section).scrollMarginTop;
-          window.scrollTo({
-            top: section.offsetTop - parseInt(scrollMarginTop),
-            behavior: "smooth",
-          });
-        }, 100);
-      }
     }
-  });
+  }
 
-  /**
-   * Navmenu Scrollspy
-   */
-  let navmenulinks = document.querySelectorAll(".navmenu a");
+  var contactForm = document.querySelector(".contact-form");
 
-  function navmenuScrollspy() {
-    navmenulinks.forEach((navmenulink) => {
-      if (!navmenulink.hash) return;
-      let section = document.querySelector(navmenulink.hash);
-      if (!section) return;
-      let position = window.scrollY + 200;
-      if (
-        position >= section.offsetTop &&
-        position <= section.offsetTop + section.offsetHeight
-      ) {
-        document
-          .querySelectorAll(".navmenu a.active")
-          .forEach((link) => link.classList.remove("active"));
-        navmenulink.classList.add("active");
-      } else {
-        navmenulink.classList.remove("active");
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      var formData = new FormData(contactForm);
+      var name = String(formData.get("name") || "");
+      var email = String(formData.get("email") || "");
+      var subject = String(formData.get("subject") || "Portfolio enquiry");
+      var message = String(formData.get("message") || "");
+      var body =
+        "Name: " +
+        name +
+        "\nEmail: " +
+        email +
+        "\n\n" +
+        message;
+
+      var sentMessage = contactForm.querySelector(".sent-message");
+      var errorMessage = contactForm.querySelector(".error-message");
+
+      if (errorMessage) {
+        errorMessage.classList.remove("d-block");
       }
+
+      if (sentMessage) {
+        sentMessage.classList.add("d-block");
+      }
+
+      window.location.href =
+        "mailto:couresma@gmail.com?subject=" +
+        encodeURIComponent(subject) +
+        "&body=" +
+        encodeURIComponent(body);
+
+      contactForm.reset();
     });
   }
-  window.addEventListener("load", navmenuScrollspy);
-  document.addEventListener("scroll", navmenuScrollspy);
+
+  var yearElement = document.getElementById("year");
+
+  if (yearElement) {
+    yearElement.textContent = String(new Date().getFullYear());
+  }
 })();

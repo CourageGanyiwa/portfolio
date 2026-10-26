@@ -3,23 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Meet Courage Ganyiwa</title>
-    <meta content="" name="description" />
-    <meta content="" name="keywords" />
-
-    <!-- Favicons -->
-    <link href="assets/img/dristig.png" rel="icon" style="border-radius: 12px;" />
-    <link href="assets/img/dristig.png" rel="apple-touch-icon" style="border-radius: 12px;" />
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Scoutie+Sans:ital,wght@0,200..800;1,200..800&display=swap"
-      rel="stylesheet"
+    <title>Courage Ganyiwa | Full Stack Software Developer</title>
+    <meta
+      content="Portfolio of Courage Ganyiwa, a full stack software developer based in Cape Town, South Africa. Web apps, automation, AI and risk assessment systems."
+      name="description"
+    />
+    <meta
+      content="Courage Ganyiwa, full stack developer, software developer, Cape Town, web development, Laravel, React, Python, AI automation"
+      name="keywords"
     />
 
-    <!-- Vendor CSS Files -->
+    <link href="assets/img/dristig.png" rel="icon" />
+    <link href="assets/img/dristig.png" rel="apple-touch-icon" />
+
     <link
       href="assets/vendor/bootstrap/css/bootstrap.min.css"
       rel="stylesheet"
@@ -29,123 +25,309 @@
       rel="stylesheet"
     />
     <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
-    <link
-      href="assets/vendor/glightbox/css/glightbox.min.css"
-      rel="stylesheet"
-    />
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
-
-    <!-- Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet" />
 
-    <!-- =======================================================
-  * Template Name: iPortfolio
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Updated: Jun 29 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <script>
+      (function () {
+        try {
+          var appearance = localStorage.getItem("appearance");
+          if (appearance !== "light") {
+            document.documentElement.classList.add("dark");
+            document.documentElement.style.colorScheme = "dark";
+          }
+
+          if (sessionStorage.getItem("promo-dismissed") === "1") {
+            document.documentElement.classList.add("promo-dismissed");
+          }
+        } catch (error) {}
+      })();
+    </script>
   </head>
 
   <body class="index-page">
-    <header id="header" class="header dark-background d-flex flex-column">
+    <a class="skip-link" href="#hero">Skip to content</a>
 
-      <div class="profile-img">
-        <img
-          src="assets/img/redflame.jpg"
-          alt=""
-          class="img-fluid rounded-circle"
-        />
+    <section class="site-promo" aria-label="Availability">
+      <div class="container">
+        <button
+          type="button"
+          class="site-promo__close"
+          data-promo-dismiss
+          aria-label="Dismiss announcement"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M18 6 6 18M6 6l12 12" />
+          </svg>
+        </button>
+        <div class="site-promo__inner">
+          <div class="site-promo__content">
+            <h2>Available for freelance projects</h2>
+            <p>Let's build something reliable, scalable and useful together.</p>
+          </div>
+          <div class="site-promo__actions">
+            <a href="#contact" class="btn btn-light">
+              Get in touch
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.75"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <header class="site-header">
+      <div class="container">
+        <div class="site-header__inner">
+          <a class="brand" href="index.html" aria-label="Courage Ganyiwa home">
+            <img
+              src="assets/img/profile.jpg"
+              alt=""
+              width="600"
+              height="600"
+            />
+            <span>Courage Ganyiwa</span>
+          </a>
+
+          <nav class="site-nav" aria-label="Primary">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#resume">Resume</a>
+            <a href="#portfolio">Projects</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+          </nav>
+
+          <div class="header-actions">
+            <button
+              type="button"
+              class="icon-btn theme-toggle"
+              data-theme-toggle
+              aria-label="Switch to light mode"
+              title="Switch to light mode"
+            >
+              <svg
+                class="icon-moon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.75"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
+              </svg>
+              <svg
+                class="icon-sun"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.75"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="4" />
+                <path
+                  d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+                />
+              </svg>
+            </button>
+            <a href="#contact" class="btn btn-primary header-cta">Hire me</a>
+            <button
+              type="button"
+              class="icon-btn menu-toggle"
+              data-menu-toggle
+              aria-expanded="false"
+              aria-controls="mobile-navigation"
+              aria-label="Menu"
+            >
+              <svg
+                class="icon-menu"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.75"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+              <svg
+                class="icon-close"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.75"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M18 6 6 18M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
       </div>
 
-
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li>
-            <a href="#hero" class="active"
-              ><i class="bi bi-house navicon"></i>Home</a
+      <div class="mobile-nav" id="mobile-navigation">
+        <nav class="container" aria-label="Mobile">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#resume">Resume</a>
+          <a href="#portfolio">Projects</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+          <div class="mobile-nav__actions">
+            <a href="#contact" class="btn btn-primary">Hire me</a>
+            <a href="service-details.html" class="btn btn-outline"
+              >Service details</a
             >
-          </li>
-          <li>
-            <a href="#about"><i class="bi bi-person navicon"></i> About</a>
-          </li>
-          <li>
-            <a href="#resume"
-              ><i class="bi bi-file-earmark-text navicon"></i> Resume</a
-            >
-          </li>
-          <li>
-            <a href="#portfolio"
-              ><i class="bi bi-images navicon"></i> Portfolio</a
-            >
-          </li>
-          <li>
-            <a href="#services"
-              ><i class="bi bi-hdd-stack navicon"></i> Services</a
-            >
-          </li>
-          <li>
-            <a href="#contact"
-              ><i class="bi bi-envelope navicon"></i> Contact</a
-            >
-          </li>
-        </ul>
-      </nav>
+          </div>
+        </nav>
+      </div>
     </header>
 
-    <main class="main">
-      <!-- Hero Section -->
-      <section id="hero" class="hero section dark-background">
-        <img src="assets/img/coding_wallpaper.png" alt="" data-aos="fade-in" class="" />
+    <div class="site-subnav">
+      <div class="container">
+        <div class="site-subnav__inner">
+          <span class="site-subnav__brand">Portfolio</span>
+          <span class="site-subnav__divider" aria-hidden="true"></span>
+          <nav aria-label="Section navigation">
+            <a href="#about">About</a>
+            <span class="sep" aria-hidden="true">/</span>
+            <a href="#skills">Skills</a>
+            <span class="sep" aria-hidden="true">/</span>
+            <a href="#resume">Resume</a>
+            <span class="sep" aria-hidden="true">/</span>
+            <a href="#portfolio">Projects</a>
+            <span class="sep" aria-hidden="true">/</span>
+            <a href="#services">Services</a>
+            <span class="sep" aria-hidden="true">/</span>
+            <a href="#contact">Contact</a>
+          </nav>
+        </div>
+      </div>
+    </div>
 
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-          <h2>Courage Ganyiwa</h2>
-          <p>
-            I'm a
-            <span
-              class="typed"
-              data-typed-items="Full Stack Software Developer, Freelancer"
-              >Software Developer</span
-            ><span
-              class="typed-cursor typed-cursor--blink"
-              aria-hidden="true"
-            ></span
-            ><span
-              class="typed-cursor typed-cursor--blink"
-              aria-hidden="true"
-            ></span>
-          </p>
+    <main class="main">
+      <section id="hero" class="hero">
+        <div class="container">
+          <div class="hero__inner">
+            <div class="hero__copy" data-aos="fade-up">
+              <p class="hero__eyebrow">Cape Town, South Africa</p>
+              <h1>Courage Ganyiwa</h1>
+              <p class="hero__role">
+                <span
+                  class="typed"
+                  data-typed-items="Full Stack Software Developer, Freelancer, Problem Solver"
+                  >Full Stack Software Developer</span
+                >
+              </p>
+              <p class="hero__lead">
+                I build modern, scalable and reliable digital solutions - from
+                web applications and APIs to AI-powered automation and risk
+                assessment systems.
+              </p>
+              <div class="hero__actions">
+                <a href="#portfolio" class="btn btn-primary">
+                  View my work
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
+                </a>
+                <a href="#contact" class="btn btn-outline">Get in touch</a>
+              </div>
+              <p class="hero__meta">
+                Web &middot; Apps &middot; Automation &middot; Systems &middot;
+                AI &middot; Risk
+              </p>
+            </div>
+
+            <div class="hero__media" data-aos="fade-up" data-aos-delay="100">
+              <div class="hero__portrait">
+                <img
+                  src="assets/img/coding_wallpaper.png"
+                  alt="Portrait of Courage Ganyiwa"
+                  width="520"
+                  height="420"
+                />
+              </div>
+              <div class="hero__badge">
+                <span class="hero__badge-dot" aria-hidden="true"></span>
+                <div>
+                  <strong>Open</strong>
+                  <span>Open to new projects</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
-      <!-- /Hero Section -->
 
-              <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up" style="margin-top: 20px;">
-          <h2>A bit about me</h2>
-          <p>
-My name is Courage Ganyiwa, and I am a Software Developer passionate about building modern, scalable, and reliable digital solutions.
-I specialize in both front-end and back-end development with experience in React, Express, Django, Flask, Laravel, PHP, and JavaScript.
-I enjoy creating efficient systems that solve real-world business problems and improve user experiences.
-My skills also include database management, API development, Git version control, Bash scripting, and Linux environments.
-I have foundational knowledge of the C programming language and a strong interest in software architecture and system optimization.
-With a background in insurance and risk assessment, I bring analytical thinking and problem-solving abilities into software development.
-I am committed to writing clean, maintainable code and continuously learning modern technologies and frameworks.
-I also enjoy collaborating on innovative projects that combine technology, efficiency, and practical business solutions.
-          </p>
+      <section id="intro" class="section section-intro">
+        <div class="container">
+          <div class="section-title" data-aos="fade-up">
+            <span class="eyebrow">A bit about me</span>
+            <h2>Building practical software for real-world problems</h2>
+            <p>
+              My name is Courage Ganyiwa, and I am a Software Developer
+              passionate about building modern, scalable, and reliable digital
+              solutions. I specialize in both front-end and back-end development
+              with experience in React, Express, Django, Flask, Laravel, PHP,
+              and JavaScript. I enjoy creating efficient systems that solve
+              real-world business problems and improve user experiences. My
+              skills also include database management, API development, Git
+              version control, Bash scripting, and Linux environments. I have
+              foundational knowledge of the C programming language and a strong
+              interest in software architecture and system optimization. With a
+              background in insurance and risk assessment, I bring analytical
+              thinking and problem-solving abilities into software development.
+              I am committed to writing clean, maintainable code and
+              continuously learning modern technologies and frameworks. I also
+              enjoy collaborating on innovative projects that combine
+              technology, efficiency, and practical business solutions.
+            </p>
+          </div>
         </div>
-        <!-- End Section Title -->
+      </section>
 
       <!-- Skills Section -->
       <section id="skills" class="skills section">
-        <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
+          <span class="eyebrow">Skills</span>
           <h2>Skills And Tools</h2>
           <p>Here's what I know and what I use:</p>
         </div>
-        <!-- End Section Title -->
 
         <div class="container" data-aos="fade-up" data-aos-delay="100">
-          <div class="row g-5">
+          <div class="row g-4">
             <div class="col-lg-7">
               <div class="skills-group">
                 <h3 class="skills-group-title">Software Development</h3>
@@ -380,8 +562,9 @@ I also enjoy collaborating on innovative projects that combine technology, effic
       <section id="about" class="about section">
 
 
-        <div class="container" data-aos="fade-up" data-aos-delay="100 ">
-          <div class="about-growth" style="margin-bottom: 100px;">
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+          <div class="about-growth">
+            <span class="eyebrow">Profile</span>
             <h3 class="about-subtitle">Continous Growth &amp; Learning</h3>
             <p class="about-outro">
               Over the past few years, I have focused on strengthening my Full Stack Development skills through continuous learning and practical projects.
@@ -393,7 +576,14 @@ I also enjoy collaborating on innovative projects that combine technology, effic
           <div class="row gy-4 justify-content-center">
             <div class="col-lg-4">
               <div class="profile-card">
-                <img src="./assets/img/Smiling_Office_Selfie.png" class="img-fluid" alt="" />
+                <img
+                  src="./assets/img/Smiling_Office_Selfie.png"
+                  class="img-fluid"
+                  alt="Courage Ganyiwa smiling in an office"
+                  width="1086"
+                  height="1448"
+                  loading="lazy"
+                />
               </div>
             </div>
             <div class="col-lg-8 content">
@@ -407,19 +597,19 @@ To support myself during that transition, I took on various roles while continui
 
               <ul class="info-grid">
                 <li>
-                  <i class="bi bi-chevron-right"></i>
+                  <i class="bi bi-cake2"></i>
                   <strong>Birthday:</strong> <span>28 July 1993</span>
                 </li>
                 <li>
-                  <i class="bi bi-chevron-right"></i>
-                  <strong>Phone:</strong> <span>+27685844931</span>
+                  <i class="bi bi-sim"></i>
+                  <strong>Mobile:</strong> <span>+27685844931</span>
                 </li>
                 <li>
-                  <i class="bi bi-chevron-right"></i>
+                  <i class="bi bi-building"></i>
                   <strong>City:</strong> <span>Capetown, RSA</span>
                 </li>
                 <li>
-                  <i class="bi bi-chevron-right"></i>
+                  <i class="bi bi-gender-male"></i>
                   <strong>Gender:</strong> <span>Male</span>
                 </li>
                 <li>
@@ -448,6 +638,7 @@ To support myself during that transition, I took on various roles while continui
       <!-- Resume Section -->
       <section id="resume" class="resume section">
         <div class="container section-title" data-aos="fade-up">
+          <span class="eyebrow">Experience</span>
           <h2>Resume</h2>
           <p>My education and professional journey</p>
         </div>
@@ -553,60 +744,156 @@ To support myself during that transition, I took on various roles while continui
       <!-- Portfolio Section -->
       <section id="portfolio" class="portfolio section">
         <div class="container section-title" data-aos="fade-up">
+          <span class="eyebrow">Selected work</span>
           <h2>Project Gallery</h2>
           <p>Some projects</p>
         </div>
 
         <div class="container">
           <div class="row gy-4">
-            
             <div class="col-lg-4 col-md-6">
-              <a href="https://themuscleandironblog.vercel.app" target="_blank">
-              <div class="portfolio-card">
-                <img src="assets/img/blog.png" alt="" />
-                <div class="portfolio-card-info">
-                  <h4>Blog</h4>
-                  <p>Fitness Blog</p>
+              <a
+                href="https://themuscleandironblog.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div class="portfolio-card">
+                  <img
+                    src="assets/img/blog.png"
+                    alt="The Muscle and Iron fitness blog"
+                    width="1877"
+                    height="365"
+                    loading="lazy"
+                  />
+                  <div class="portfolio-card-info">
+                    <h4>Blog</h4>
+                    <p>Fitness Blog</p>
+                    <span class="portfolio-card__link">
+                      Visit site
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M7 17 17 7M7 7h10v10" />
+                      </svg>
+                    </span>
+                  </div>
                 </div>
-              </div>
               </a>
             </div>
 
             <div class="col-lg-4 col-md-6">
-              <a href="https://coresupplements.co.za" target="_blank">
-              <div class="portfolio-card">
-                <img src="assets/img/InShot_20240321_090010590.jpg" alt="" />
-                <div class="portfolio-card-info">
-                  <h4>eCommerce Store</h4>
-                  <p>Gym Supplements</p>
+              <a
+                href="https://coresupplements.co.za"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div class="portfolio-card">
+                  <img
+                    src="assets/img/InShot_20240321_090010590.jpg"
+                    alt="Core Supplements eCommerce store"
+                    width="365"
+                    height="365"
+                    loading="lazy"
+                  />
+                  <div class="portfolio-card-info">
+                    <h4>eCommerce Store</h4>
+                    <p>Gym Supplements</p>
+                    <span class="portfolio-card__link">
+                      Visit site
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M7 17 17 7M7 7h10v10" />
+                      </svg>
+                    </span>
+                  </div>
                 </div>
-              </div>
               </a>
             </div>
 
             <div class="col-lg-4 col-md-6">
-              <a href="https://dristig.online" target="_blank">
-              <div class="portfolio-card">
-                <img src="assets/img/dristig_screenshot.png" alt="" />
-                <div class="portfolio-card-info">
-                  <h4>Dristig</h4>
-                  <p>Web Services</p>
+              <a
+                href="https://dristig.online"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div class="portfolio-card">
+                  <img
+                    src="assets/img/dristig_screenshot.png"
+                    alt="Dristig website"
+                    width="365"
+                    height="365"
+                    loading="lazy"
+                  />
+                  <div class="portfolio-card-info">
+                    <h4>Dristig</h4>
+                    <p>Web Services</p>
+                    <span class="portfolio-card__link">
+                      Visit site
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M7 17 17 7M7 7h10v10" />
+                      </svg>
+                    </span>
+                  </div>
                 </div>
-              </div>
               </a>
             </div>
+
             <div class="col-lg-4 col-md-6">
-
-              <a href="https://muscleandiron.gymconnection.online" target="_blank">
-              <div class="portfolio-card">
-                <img src="assets/img/muscleandiron.png" alt="" />
-                <div class="portfolio-card-info">
-                  <h4>Muscle n' Iron</h4>
-                  <p>Fitness Community Platform</p>
+              <a
+                href="https://muscleandiron.gymconnection.online"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div class="portfolio-card">
+                  <img
+                    src="assets/img/muscleandiron.png"
+                    alt="Muscle n' Iron community platform"
+                    width="365"
+                    height="365"
+                    loading="lazy"
+                  />
+                  <div class="portfolio-card-info">
+                    <h4>Muscle n' Iron</h4>
+                    <p>Fitness Community Platform</p>
+                    <span class="portfolio-card__link">
+                      Visit site
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M7 17 17 7M7 7h10v10" />
+                      </svg>
+                    </span>
+                  </div>
                 </div>
-              </div>
+              </a>
             </div>
-
           </div>
         </div>
       </section>
@@ -616,9 +903,11 @@ To support myself during that transition, I took on various roles while continui
       <section id="services" class="services section">
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
+          <span class="eyebrow">Services</span>
           <h2>Services</h2>
           <p>
-
+            From full stack development to AI-powered risk assessment - here is
+            how I can help.
           </p>
         </div>
         <!-- End Section Title -->
@@ -635,7 +924,7 @@ To support myself during that transition, I took on various roles while continui
               </div>
               <div>
                 <h4 class="title">
-                  <a href="#" class="stretched-link"
+                  <a href="service-details.html" class="stretched-link"
                     >Full Stack Development</a
                   >
                 </h4>
@@ -769,195 +1058,255 @@ To support myself during that transition, I took on various roles while continui
       </section>
       <!-- /Services Section -->
 
-      <!-- Testimonials Section -->
-      <!-- <section id="testimonials" class="testimonials section dark-background">
-        <img src="assets/img/programming.svg" class="testimonials-bg-svg" alt="">
-        Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Testimonials</h2>
-          <p>
-           Testimonials are on the way. If you enjoyed working with me and
-  appreciated the service provided, I’d be happy to feature your feedback
-  here in the future. Deal?
-          </p>
-        </div>
-        <!-- End Section Title -->
+      <section id="testimonials" class="section">
+        <div class="container">
+          <div class="section-title" data-aos="fade-up">
+            <span class="eyebrow">Feedback</span>
+            <h2>Testimonials</h2>
+          </div>
+          <div class="quote-card" data-aos="fade-up">
+            <p>
+              Testimonials are on the way. If you enjoyed working with me and
+              appreciated the service provided, I'd be happy to feature your
+              feedback here in the future. Deal?
+            </p>
+            <a
+              href="mailto:couresma@gmail.com?subject=Feedback%20for%20your%20portfolio"
+              class="btn btn-outline"
+            >
+              Share your feedback
+            </a>
           </div>
         </div>
       </section>
-      <!-- /Testimonials Section -->
 
-      <!-- Contact Section -->
       <section id="contact" class="contact section">
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Contact</h2>
-          <p>
-Feel free to get in touch so we get straight down to work.
-          </p>
-        </div>
-        <!-- End Section Title -->
+        <div class="container">
+          <div class="section-title" data-aos="fade-up">
+            <span class="eyebrow">Contact</span>
+            <h2>Let's work together</h2>
+            <p>Feel free to get in touch so we get straight down to work.</p>
+          </div>
 
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
           <div class="row gy-4">
             <div class="col-lg-5">
-              <div class="info-wrap">
-                <div
-                  class="info-item d-flex"
-                  data-aos="fade-up"
-                  data-aos-delay="200"
-                >
-                  <i class="bi bi-geo-alt flex-shrink-0"></i>
+              <div class="info-wrap" data-aos="fade-up">
+                <div class="info-item">
+                  <i class="bi bi-geo-alt"></i>
                   <div>
                     <h3>Address</h3>
                     <p>Ginya Street, Kraaifontein East, Western Cape</p>
                   </div>
                 </div>
-                <!-- End Info Item -->
 
-                <div
-                  class="info-item d-flex"
-                  data-aos="fade-up"
-                  data-aos-delay="300"
-                >
-                  <i class="bi bi-telephone flex-shrink-0"></i>
+                <div class="info-item">
+                  <i class="bi bi-telephone"></i>
                   <div>
                     <h3>Call Me</h3>
-                    <p>+27 685 844 931</p>
+                    <p><a href="tel:+27685844931">+27 685 844 931</a></p>
                   </div>
                 </div>
-                <!-- End Info Item -->
 
-                <div
-                  class="info-item d-flex"
-                  data-aos="fade-up"
-                  data-aos-delay="400"
-                >
-                  <i class="bi bi-envelope flex-shrink-0"></i>
+                <div class="info-item">
+                  <i class="bi bi-envelope"></i>
                   <div>
                     <h3>Email Me</h3>
-                    <p>couresma@gmail.com</p>
+                    <p>
+                      <a href="mailto:couresma@gmail.com">couresma@gmail.com</a>
+                    </p>
                   </div>
                 </div>
-                <!-- End Info Item -->
+              </div>
+
+              <div
+                class="contact-media"
+                data-aos="fade-up"
+                data-aos-delay="100"
+              >
+                <img
+                  src="assets/img/linux_tty.png"
+                  alt="Terminal window on a Linux system"
+                  width="520"
+                  height="420"
+                  loading="lazy"
+                />
               </div>
             </div>
-
 
             <div class="col-lg-7">
-              <div>
-                <img src="assets/img/linux_tty.png" class="col-12" alt="">
-              </div>
-            </div>
-
-            <!-- <div class="col-lg-7">
-              <form
-                action="forms/contact.php"
-                method="post"
-                class="php-email-form"
+              <div
+                class="contact-form-card"
                 data-aos="fade-up"
-                data-aos-delay="200"
+                data-aos-delay="100"
               >
-                <div class="row gy-4">
-                  <div class="col-md-6">
-                    <label for="name-field" class="pb-2">Your Name</label>
-                    <input
-                      type="text"
-                      name="name"
-                      id="name-field"
-                      class="form-control"
-                      required=""
-                    />
-                  </div>
-
-                  <div class="col-md-6">
-                    <label for="email-field" class="pb-2">Your Email</label>
-                    <input
-                      type="email"
-                      class="form-control"
-                      name="email"
-                      id="email-field"
-                      required=""
-                    />
-                  </div>
-
-                  <div class="col-md-12">
-                    <label for="subject-field" class="pb-2">Subject</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="subject"
-                      id="subject-field"
-                      required=""
-                    />
-                  </div>
-
-                  <div class="col-md-12">
-                    <label for="message-field" class="pb-2">Message</label>
-                    <textarea
-                      class="form-control"
-                      name="message"
-                      rows="10"
-                      id="message-field"
-                      required=""
-                    ></textarea>
-                  </div>
-
-                  <div class="col-md-12 text-center">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">
-                      Your message has been sent. Thank you!
+                <form
+                  action="mailto:couresma@gmail.com"
+                  method="post"
+                  enctype="text/plain"
+                  class="contact-form"
+                >
+                  <div class="row gy-3">
+                    <div class="col-md-6">
+                      <label for="name-field" class="form-label"
+                        >Your Name</label
+                      >
+                      <input
+                        type="text"
+                        name="name"
+                        id="name-field"
+                        class="form-control"
+                        required
+                      />
                     </div>
 
-                    <button type="submit">Send Message</button>
+                    <div class="col-md-6">
+                      <label for="email-field" class="form-label"
+                        >Your Email</label
+                      >
+                      <input
+                        type="email"
+                        class="form-control"
+                        name="email"
+                        id="email-field"
+                        required
+                      />
+                    </div>
+
+                    <div class="col-12">
+                      <label for="subject-field" class="form-label"
+                        >Subject</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="subject"
+                        id="subject-field"
+                        required
+                      />
+                    </div>
+
+                    <div class="col-12">
+                      <label for="message-field" class="form-label"
+                        >Message</label
+                      >
+                      <textarea
+                        class="form-control"
+                        name="message"
+                        rows="7"
+                        id="message-field"
+                        required
+                      ></textarea>
+                    </div>
+
+                    <div class="col-12">
+                      <div class="form-status" aria-live="polite">
+                        <div class="loading">Loading</div>
+                        <div class="error-message"></div>
+                        <div class="sent-message">
+                          Thanks! Your email app should open with the message
+                          ready to send.
+                        </div>
+                      </div>
+
+                      <button type="submit" class="btn btn-primary btn-block">
+                        Send Message
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </form>
-            </div> -->
-            <!-- End Contact Form -->
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </section>
-      <!-- /Contact Section -->
     </main>
 
-    <footer id="footer" class="footer position-relative light-background">
+    <footer class="site-footer">
       <div class="container">
-        <div class="copyright text-center">
+        <div class="site-footer__grid">
+          <div class="site-footer__brand">
+            <a class="brand" href="index.html">
+              <img
+              src="assets/img/my-profile-img.jpg"
+              alt=""
+              width="600"
+              height="600"
+            />
+              <span>Courage Ganyiwa</span>
+            </a>
+            <p>Cape Town, South Africa</p>
+            <p class="site-footer__contact">
+              <i class="bi bi-envelope"></i>
+              <a href="mailto:couresma@gmail.com">couresma@gmail.com</a>
+            </p>
+            <p class="site-footer__contact">
+              <i class="bi bi-telephone"></i>
+              <a href="tel:+27685844931">+27 685 844 931</a>
+            </p>
+          </div>
+
+          <div>
+            <h2>Explore</h2>
+            <ul>
+              <li><a href="#about">About</a></li>
+              <li><a href="#skills">Skills</a></li>
+              <li><a href="#resume">Resume</a></li>
+              <li><a href="#portfolio">Projects</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h2>Services</h2>
+            <ul>
+              <li><a href="service-details.html">Full Stack Development</a></li>
+              <li>
+                <a href="service-details.html"
+                  >AI Agents &amp; Workflow Automation</a
+                >
+              </li>
+              <li>
+                <a href="service-details.html"
+                  >AI-Powered Risk Assessment</a
+                >
+              </li>
+              <li>
+                <a href="service-details.html">Maintenance &amp; Security</a>
+              </li>
+              <li><a href="service-details.html">Loss Adjusting</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h2>Get in touch</h2>
+            <ul>
+              <li><a href="#contact">Contact</a></li>
+              <li><a href="mailto:couresma@gmail.com">Email me</a></li>
+              <li><a href="https://dristig.online">Dristig</a></li>
+              <li>Available for freelance</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="site-footer__bottom">
           <p>
-            © <span>Copyright</span>
-            <strong class="sitename"><a href="https://dristig.online">dristig</a></strong>
-            <span>All Rights Reserved</span>
+            &copy; <span id="year">2026</span> Courage Ganyiwa. All rights
+            reserved.
           </p>
+          <div class="site-footer__bottom-links">
+            <a href="https://dristig.online">Dristig</a>
+            <a href="#contact">Contact</a>
+            <a href="service-details.html">Services</a>
+          </div>
         </div>
       </div>
     </footer>
 
-    <!-- Scroll Top -->
-    <a
-      href="#"
-      id="scroll-top"
-      class="scroll-top d-flex align-items-center justify-content-center"
-      ><i class="bi bi-arrow-up-short"></i
-    ></a>
+    <a href="#" class="scroll-top" aria-label="Back to top">
+      <i class="bi bi-arrow-up-short"></i>
+    </a>
 
-    <!-- Preloader -->
-    <div id="preloader"></div>
-
-    <!-- Vendor JS Files -->
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
     <script src="assets/vendor/aos/aos.js"></script>
     <script src="assets/vendor/typed.js/typed.umd.js"></script>
-    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-    <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
   </body>
 </html>
